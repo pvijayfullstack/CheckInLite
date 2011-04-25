@@ -1,0 +1,21 @@
+<%= link_to 'Back', users_path %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+
+<h2>Last Three Locations</h2>
+<%= render :partial => "location",
+           :collection => @user.locations %>
+
+<%= render 'form_location' %>
