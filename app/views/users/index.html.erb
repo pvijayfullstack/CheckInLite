@@ -5,7 +5,6 @@
     <th>Name</th>
     <th>Location</th>
     <th>Contact Info</th>
-    <th>Delete User</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -18,7 +17,6 @@
 	<td></td>
 	<td></td>
 	<% end %>
-	<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
