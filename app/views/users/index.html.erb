@@ -11,9 +11,14 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= link_to user.name, user %></td>
-	<td><a href="http://www.google.com/maps?q=<%=user.locations.first.address if user.locations.first.address %>"><%= user.locations.first.name %></a></td>
+	<% if user.locations.exists? %>
+	<td><a href="http://www.google.com/maps?q=<%= user.locations.first.address %>"><%= user.locations.first.name %></a></td>
 	<td><%= user.locations.first.contact_info if user.locations %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% else %>
+	<td></td>
+	<td></td>
+	<% end %>
+	<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
