@@ -3,6 +3,7 @@
 This is a simple app that lets people check in to a location. Users can create new locations, check in to one of the last three locations, or view all the people who have checked in.
 
 *To Do*
+
 * Figure out authentication
 * Fix the buttons on the individual user screen
 * Show time last checked in on user index screen
