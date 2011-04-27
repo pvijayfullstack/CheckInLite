@@ -1,0 +1,28 @@
+<h1>Log in</h1>
+
+<%= form_tag sessions_path do %>
+  <p>
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email, params[:email] %>
+  </p>
+  <p>
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </p>
+  <p class="button"><%= submit_tag "Log in" %></p>
+<% end %>
+
+<!-- layouts/application.html.erb -->
+<div id="user_nav">
+  <% if current_user %>
+    Logged in as <%= current_user.email %>.
+    <%= link_to "Log out", log_out_path %>
+  <% else %>
+    <%= link_to "Sign up", sign_up_path %> or
+    <%= link_to "log in", log_in_path %>
+  <% end %>
+</div>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>

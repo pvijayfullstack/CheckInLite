@@ -6,6 +6,7 @@
     <th>Location</th>
     <th>Contact Info</th>
 	<th>Check In Time</th>
+	<th>Password hash</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -20,6 +21,7 @@
 	<td></td>
 	<td></td>
 	<% end %>
+	<td><%= user.password_hash %></td>
   </tr>
 <% end %>
 </table>
