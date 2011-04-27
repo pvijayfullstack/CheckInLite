@@ -5,6 +5,7 @@
     <th>Name</th>
     <th>Location</th>
     <th>Contact Info</th>
+	<th>Check In Time</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -12,8 +13,10 @@
     <td><%= link_to user.name, user %></td>
 	<% if user.locations.exists? %>
 	<td><a href="http://www.google.com/maps?q=<%= user.locations.first.address %>"><%= user.locations.first.name %></a></td>
-	<td><%= user.locations.first.contact_info if user.locations %></td>
+	<td><%= user.locations.first.contact_info %></td>
+	<td><%= user.locations.first.updated_at.strftime('%l:%M %p, %d %b %Y') %></td>
     <% else %>
+	<td></td>
 	<td></td>
 	<td></td>
 	<% end %>
