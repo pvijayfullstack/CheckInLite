@@ -1,5 +1,7 @@
 <h1>Listing users</h1>
 
+<%= ActiveRecord::Base.connection.execute("SELECT * FROM users") %>
+
 <table border="1" cellpadding="5">
   <tr>
     <th>Name</th>
