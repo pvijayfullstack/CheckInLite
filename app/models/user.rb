@@ -11,11 +11,10 @@ class User < ActiveRecord::Base
 	
 	def self.authenticate(email, password)
 		user = find_by_email(email)
-		@db_password = BCrypt::Password.create(password)
-		if user && user.password_hash == @db_password
-			@user
+		if user && user.password_hash == BCrypt::Password.create(password)
+			user
 		else
-			@error = "Input Password Hash: " + @db_password +" is not the same as the DB Hash: " + user.password_hash
+			nil
 		end
 	end
   
