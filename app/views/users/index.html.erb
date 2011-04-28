@@ -1,14 +1,11 @@
 <h1>Listing users</h1>
 
-<%= ActiveRecord::Base.connection.execute("SELECT * FROM users") %>
-
 <table border="1" cellpadding="5">
   <tr>
     <th>Name</th>
     <th>Location</th>
     <th>Contact Info</th>
 	<th>Check In Time</th>
-	<th>Password hash</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -23,9 +20,6 @@
 	<td></td>
 	<td></td>
 	<% end %>
-	<td><%= user.password_hash %></td>
   </tr>
 <% end %>
 </table>
-
-<p><%= link_to 'Sign Up', :sign_up %></p>
