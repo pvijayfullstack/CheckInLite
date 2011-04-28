@@ -54,15 +54,3 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-
-.button {
-	margin: 20px;
-	padding: 0px;
-	background: #ccc;
-	border: solid 2px #000;
-	height: 40px;
-	width: 300px;
-	text-align: center;
-	color: #000;
-	line-height: 35px;
-}

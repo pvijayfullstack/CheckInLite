@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
+  
     @user = User.new(params[:user])
 
     respond_to do |format|

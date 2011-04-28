@@ -2,8 +2,7 @@ class User < ActiveRecord::Base
 
 	attr_accessible :name, :email, :password, :password_confirmation
 	attr_accessor :password
-	before_save :password
-
+	before_save :encrypt_password
 
 	validates_uniqueness_of :email
 	validates_presence_of :email, :name
@@ -12,17 +11,17 @@ class User < ActiveRecord::Base
 	
 	def self.authenticate(email, password)
 		user = find_by_email(email)
-		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-			user
+		@db_password = BCrypt::Password.create(password)
+		if user && user.password_hash == @db_password
+			@user
 		else
-			nil
+			@error = "Input Password Hash: " + @db_password +" is not the same as the DB Hash: " + user.password_hash
 		end
 	end
   
 	def encrypt_password
 		if password.present?
-			self.password_salt = BCrypt::Engine.generate_salt
-			self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+			self.password_hash = BCrypt::Password.create(password)
 		end
 	end
 
