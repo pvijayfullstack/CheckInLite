@@ -29,11 +29,9 @@
   </tr>
 <% end %>
 </table>
+<br><br>
 <form action="#" onsubmit="showLocation(); return false;"> 
-      <p> 
-        <b>Search for an address:</b> 
-        <input type="text" name="q" value="" class="address_input" size="40" /> 
-        <input type="submit" name="find" value="Search" /> 
-      </p> 
+        <input type="hidden" name="q" value="" class="address_input" size="40" /> 
+        <input type="hidden" name="find" value="Search" /> 
     </form> 
 <div id="map_canvas" style="width: 500px; height: 300px"></div> 
