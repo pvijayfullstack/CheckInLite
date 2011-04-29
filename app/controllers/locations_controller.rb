@@ -4,11 +4,11 @@ class LocationsController < ApplicationController
 	  @user = User.find(params[:user_id])
 	  @location = @user.locations.create(params[:location])
     if @location.save
-      redirect_to (@user, :notice => 'Location added')
-      #redirect_to (@user), :notice => 'Location added'
+      #redirect_to (@user, :notice => 'Location added')
+      redirect_to (@user), :notice => 'Location added'
     else
-      redirect_to (@user, :notice => 'Location not added, please include all fields.')
-      #redirect_to (@user), :notice => 'Location not added, please include all fields.'
+      #redirect_to (@user, :notice => 'Location not added, please include all fields.')
+      redirect_to (@user), :notice => 'Location not added, please include all fields.'
     end
 	end
 	def edit
