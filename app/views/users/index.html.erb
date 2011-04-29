@@ -10,7 +10,13 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= link_to user.name, user %></td>
+    <td>
+	<%= if user.id == session[:user_id] 
+		link_to user.name, user
+	else 
+		user.name
+	end 
+	%></td>
 	<% if user.locations.exists? %>
 	<td><a href="http://www.google.com/maps?q=<%= user.locations.first.address %>"><%= user.locations.first.name %></a></td>
 	<td><%= user.locations.first.contact_info %></td>

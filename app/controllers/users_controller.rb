@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.xml
+  before_filter :login_required, :only=>['index', 'show', 'edit', 'update', 'destroy']
   def index
     @users = User.all
 
@@ -63,7 +62,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-
+		session[:user_id] = nil
     respond_to do |format|
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
