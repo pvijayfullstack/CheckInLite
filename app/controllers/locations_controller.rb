@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
-  before_filter :login_required, :only=>['create', 'edit', 'destroy']
-  before_filter :user_valid?, :only => ['create', 'edit', 'destroy']
+  #before_filter :login_required, :only=>['create', 'check_in', 'destroy']
+  before_filter :user_valid?, :only => ['create', 'destroy']
 
 	def create
 	  @user = User.find(params[:user_id])
@@ -16,8 +16,9 @@ class LocationsController < ApplicationController
     end
 	end
 
-	def edit
-		@location = Location.find(params[:user_id])
+	def check_in
+	  @user = User.find(session[:user_id])
+		@location = Location.find(params[:location_id])
 	  @location.update_attributes(:updated_at => Time.now)
     respond_to do |format|
       format.html { redirect_to(@user, :notice => 'Updated your location.') }
