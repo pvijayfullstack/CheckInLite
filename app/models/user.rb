@@ -24,6 +24,12 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
 	end
+	
+	def user_valid
+	  if user.id == session[:user_id] 
+	    return true
+	  end
+	end
 
 	has_many :locations, :order => "updated_at DESC", :limit => 3, :dependent => :destroy
 end

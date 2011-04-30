@@ -1,0 +1,35 @@
+body {
+	background: #aaa;
+}
+
+.container {
+	background: #fff;
+	border: 1px #000 solid;
+	margin: 0px auto;
+	margin-top: 50px;
+	padding: 20px;
+	width: 700px;
+	height: 100%;
+}
+
+table {
+	width: 100%;
+	border: 0px #000 solid;
+	margin: 0px;
+	padding: 0px;
+}
+
+tr {
+	margin: 0px;
+	padding: 0px;	
+}
+
+th, td {
+	border: 1px #000 solid;
+	margin: 0;
+	padding: 5;
+}
+
+h1 {
+	color: #888;
+}

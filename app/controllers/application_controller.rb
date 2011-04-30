@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  Time.zone = 'Eastern Time (US & Canada)'
-  helper_method :current_user
+  helper_method :current_user, :user_valid
 
   private
 
@@ -19,9 +18,17 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
-  def user_valid 
+  def user_valid?
+    if params[:user_id].blank?
+      @user = User.find(params[:id])
+    else
+      @user = User.find(params[:user_id])
+    end
     if session[:user_id] == @user.id
       return true
+    else
+      redirect_to(:root, :notice => 'You do not have permission for that page.')
     end
   end
+
 end

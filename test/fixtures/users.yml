@@ -1,9 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  email: MyString
+Mike:
+  name: Mike Shea
+  email: mike@mikeshea.net
+  password_salt: $2a$10$Z0ddeSAXy6wUM6GF8AXN1O
+  password_hash: $2a$10$Z0ddeSAXy6wUM6GF8AXN1OxPBa0Ptdy3xTy7MBRPUpwjvKv48ulee
 
-two:
-  name: MyString
-  email: MyString
+Michelle:
+  name: Michelle Shea
+  email: michelle.barratt@gmail.com
+  password_salt: $2a$10$tf2GEhuxMg/BdXXycjwnRe
+  password_hash: $2a$10$tf2GEhuxMg/BdXXycjwnRe.6ASeI4UQQL8MqVpMX5mC60.FDNjwUy
+

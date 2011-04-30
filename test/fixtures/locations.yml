@@ -1,11 +1,20 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  address: MyString
-  contact_info: MyString
+Mike Home:
+  user: Mike
+  name: Home
+  address: 2808 Kelly Square, Vienna VA 22181
+  contact_info: mike@mikeshea.net
 
-two:
-  name: MyString
-  address: MyString
-  contact_info: MyString
+MITRE:
+  user: Mike
+  name: MITRE
+  address: 7515 Coleshire Drive, Mclean VA 22102
+  contact_info: mshea@mitre.org
+
+Michelle Home:
+  user: Michelle
+  name: Home
+  address: 2808 Kelly Square, Vienna VA 22181
+  contact_info: michelle.barratt@gmail.com
+
