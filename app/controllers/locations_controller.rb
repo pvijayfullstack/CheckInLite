@@ -1,5 +1,4 @@
 class LocationsController < ApplicationController
-  #before_filter :login_required, :only=>['create', 'check_in', 'destroy']
   before_filter :user_valid?, :only => ['create', 'destroy']
 
 	def create
@@ -19,9 +18,13 @@ class LocationsController < ApplicationController
 	def check_in
 	  @user = User.find(session[:user_id])
 		@location = Location.find(params[:location_id])
-	  @location.update_attributes(:updated_at => Time.now)
-    respond_to do |format|
-      format.html { redirect_to(@user, :notice => 'Updated your location.') }
+		if @user.id == @location.user_id
+	    @location.update_attributes(:updated_at => Time.now)
+      respond_to do |format|
+        format.html { redirect_to(@user, :notice => 'Updated your location.') }
+      end
+    else
+      redirect_to(:root, :notice => 'You do not have permission for that page.')
     end
   end
 
