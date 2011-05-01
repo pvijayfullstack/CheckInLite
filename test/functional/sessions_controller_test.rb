@@ -12,7 +12,7 @@ class SessionsControllerTest < ActionController::TestCase
   
   test "should destroy a session" do
     delete(:destroy, {'user_id' => @user.id}, {'user_id' => @user.id})
-    assert_response :success
+    assert_response 302
   end
 
 end

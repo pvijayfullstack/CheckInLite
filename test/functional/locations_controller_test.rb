@@ -13,7 +13,7 @@ class LocationsControllerTest < ActionController::TestCase
 
   test "should check in a user at a location" do
     get(:check_in, {'location_id' => @location.id}, {'user_id' => @user.id})
-    assert_response :success
+    assert_response 302
   end
   
   test "should destroy a location record" do
