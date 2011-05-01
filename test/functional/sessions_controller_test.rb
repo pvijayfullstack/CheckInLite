@@ -1,18 +1,17 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
+  setup do
+    @user = User.last
   end
-  
-  test "should create a new session" do
-    get :create
+
+  test "should create new session" do
+    get(:create, {:email => "mike@mikeshea.net2", :password => "thx1138"}, {'user_id' => @user.id})
     assert_response :success
   end
   
   test "should destroy a session" do
-    get :destroy
+    delete(:destroy, {'user_id' => @user.id}, {'user_id' => @user.id})
     assert_response :success
   end
 
