@@ -5,5 +5,15 @@ class SessionsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+  
+  test "should create a new session" do
+    get :create
+    assert_response :success
+  end
+  
+  test "should destroy a session" do
+    get :destroy
+    assert_response :success
+  end
 
 end

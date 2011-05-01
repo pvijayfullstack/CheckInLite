@@ -2,48 +2,60 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
-    @user = users(:one)
+    @user = User.last
   end
 
   test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:users)
-  end
-
-  test "should get new" do
-    get :new
+    get(:index, nil, {'user_id' => @user.id})
     assert_response :success
   end
-
-  test "should create user" do
-    assert_difference('User.count') do
-      post :create, :user => @user.attributes
-    end
-
-    assert_redirected_to user_path(assigns(:user))
+  
+  test "should make a new user record" do
+    post :new
+    assert_response :success
   end
-
-  test "should show user" do
-    get :show, :id => @user.to_param
+  
+  test "should load the edit page for an individual user record" do
+    get(:edit, {'id' => @user.id}, {'user_id' => @user.id})
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, :id => @user.to_param
+  test "one user should not load the edit page for another user" do
+    get(:edit, {'id' => @user.id}, {'user_id' => '1'})
+    assert_response 302
+  end
+  
+  test "should update an individual user record" do
+    post(:edit, {'id' => @user.id}, {'user_id' => @user.id}, {'user' => @user})
     assert_response :success
   end
 
-  test "should update user" do
-    put :update, :id => @user.to_param, :user => @user.attributes
-    assert_redirected_to user_path(assigns(:user))
+  test "one user should not update another's record" do
+    post(:edit, {'id' => @user.id}, {'user_id' => '1'}, {'user' => @user})
+    assert_response 302
+  end
+  
+  test "should view an individual user record" do
+    @user = User.last
+    get(:show, {'id' => @user.id}, {'user_id' => @user.id}) 
+    assert_response :success
   end
 
-  test "should destroy user" do
-    assert_difference('User.count', -1) do
-      delete :destroy, :id => @user.to_param
-    end
+  test "one user should not view another's record" do
+    @user = User.last
+    get(:show, {'id' => @user.id}, {'user_id' => '1'}) 
+    assert_response 302
+  end
 
-    assert_redirected_to users_path
+  test "should delete an individual user record" do
+    @user = User.last
+    get(:show, {'id' => @user.id}, {'user_id' => @user.id})
+    assert_response :success
+  end
+
+  test "one user should not delete another user's record" do
+    @user = User.last
+    get(:show, {'id' => @user.id}, {'user_id' => '1'})
+    assert_response 302
   end
 end

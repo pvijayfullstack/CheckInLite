@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :only=>['index', 'show', 'edit', 'update', 'destroy']
+  before_filter :login_required, :only=>['index']
   before_filter :user_valid?, :only => ['show', 'edit', 'update', 'destroy']
   
   def index
     @users = User.all
+    @user = User.find(session[:user_id])
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      format.html
     end
   end
 

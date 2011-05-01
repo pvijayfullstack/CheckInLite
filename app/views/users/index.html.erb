@@ -3,7 +3,7 @@
   <%= javascript_include_tag "map_placement.js" %>
 <% end %>
 
-<p>Signed in as <%= current_user.email %>. <%= link_to "Sign out", log_out_path %>.</p>
+<p>Signed in as <%= @user.email %>. <%= link_to "Sign out", log_out_path %>.</p>
 
 <p id="notice"><%= notice %></p>
 
