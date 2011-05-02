@@ -6,42 +6,6 @@
   <%= javascript_include_tag :defaults %>
   <%= yield :javascript_includes %>
   <%= csrf_meta_tag %>
-    <script type="text/javascript"> 
-    var map;
-    var geocoder;
- 
-    function initialize() {
-      map = new GMap2(document.getElementById("map_canvas"));
-      map.setCenter(new GLatLng(38.921, -77.028), 11);
-      geocoder = new GClientGeocoder();
-    }
-
-    function addAddressToMap(response) {
-      map.clearOverlays();
-      if (!response || response.Status.code != 200) {
-        alert("Sorry, we were unable to geocode that address");
-      } else {
-        place = response.Placemark[0];
-        point = new GLatLng(place.Point.coordinates[1],
-                            place.Point.coordinates[0]);
-        marker = new GMarker(point);
-        map.addOverlay(marker);
-        marker.openInfoWindowHtml(place.address + '<br>' +
-          '<b>Country code:</b> ' + place.AddressDetails.Country.CountryNameCode);
-      }
-    }
-
-    function showLocation() {
-      var address = document.forms[0].q.value;
-      geocoder.getLocations(address, addAddressToMap);
-    }
-
-    function findLocation(address) {
-      document.forms[0].q.value = address;
-      showLocation();
-    }
-    </script>
-  
   </head>
   <body bgcolor="#aaaaaa" onload="initialize()"> 
 	<div class="container">
