@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test "save_new_user" do
+  test "new user should not save without name, email, and pw" do
     user = User.new
     assert !user.save
   end
+	
+	test "authenticate email and password" do
+		user = authenticate("mike@mikeshea.net", "thx1138")
+		assert user
+	end
+ 
 end
