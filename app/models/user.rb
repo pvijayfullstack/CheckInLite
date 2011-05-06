@@ -25,11 +25,5 @@ class User < ActiveRecord::Base
     end
 	end
 	
-	def user_valid
-	  if user.id == session[:user_id] 
-	    return true
-	  end
-	end
-
 	has_many :locations, :order => "updated_at DESC", :limit => 3, :dependent => :destroy
 end

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
-  def user_valid?
+    def user_valid?
     if params[:user_id].blank?
       @user = User.find(params[:id])
     else
@@ -30,5 +30,5 @@ class ApplicationController < ActionController::Base
       redirect_to(:root, :notice => 'You do not have permission for that page.')
     end
   end
-
+  
 end
