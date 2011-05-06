@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
-    @user = User.find(session[:user_id])
+    @users = @users.sort_by &:updated_at
+    #@users.sort { |b,a| a.updated_at <=> b.updated_at }
+    #@user = User.find(session[:user_id])
     respond_to do |format|
       format.html
     end
