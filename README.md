@@ -4,6 +4,6 @@ This is a simple app that lets people check in to a location. Users can create n
 
 ## To Do ##
 
-* Figure out a way to show all users on Google Maps
-* Write tests
-* build a prettier page
+* Build a page that shows all locations on a map.
+* Add a way to follow specific people.
+* Get unit tests working.
