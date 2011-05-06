@@ -1,9 +1,10 @@
-body {
+html, body {
 	background: #aaa;
 	font-size:   14px;
 	line-height: 18px;
 	font-family: verdana, arial, helvetica, sans-serif;
 	color: #333;
+	height: 100%;
 }
 
 a { color: #333; }
