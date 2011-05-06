@@ -4,9 +4,10 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
-    #@users = @users.sort_by &:updated_at
-    #@users.sort { |b,a| a.updated_at <=> b.updated_at }
+    #@users = User.find(:all, :joins => "left outer join locations on locations.user_id = users.id", :order => "locations.updated_at DESC")
+    @users = User.find(:all, :include => :locations, :order => 'locations.updated_at DESC')
     @user = User.find(session[:user_id])
+    
     respond_to do |format|
       format.html
     end
