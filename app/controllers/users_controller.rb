@@ -52,7 +52,10 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-	  session[:user_id] = nil
+    if !@admin
+	    session[:user_id] = nil
+	    @user = User.find(session[:user_id])
+	  end
     respond_to do |format|
       format.html { redirect_to(root_url) }
     end

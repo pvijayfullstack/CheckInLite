@@ -25,8 +25,10 @@ class ApplicationController < ActionController::Base
       @user = User.find(params[:user_id])
     end
     @current_user_from_session = User.find(session[:user_id]) if session[:user_id]
-    if session[:user_id] == @user.id || @current_user_from_session && @current_user_from_session.email == "mike@mikeshea.net"
-    #if session[:user_id] == @user.id
+    if session[:user_id] == @user.id
+      return true
+    elsif @current_user_from_session && @current_user_from_session.email == "mike@mikeshea.net"
+      @admin = 1
       return true
     else
       redirect_to(:root, :notice => 'You do not have permission for that page.')
