@@ -11,7 +11,7 @@
   <tr>
     <th>Name</th>
     <th>Location</th>
-    <th>Contact Info</th>
+    <th>Preferred Contact Method</th>
 	<th>Check In Time</th>
 	
   </tr>
@@ -23,7 +23,13 @@
 		link_to user.name, user
 	else 
 		user.name
-	end 
+	end
+	%>
+	<%=
+	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+	if @current_user.email == "mike@mikeshea.net"
+		link_to 'Destroy', user, :confirm => 'Are you sure you want to delete your entire user record and all locations?', :method => :delete
+	end
 	%></td>
 	<% if user.locations.exists? %>
 	<td><a href="http://www.google.com/maps?q=<%=user.locations.first.address%>"><%= user.locations.first.name %></a></td>

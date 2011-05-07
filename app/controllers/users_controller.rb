@@ -52,10 +52,9 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-		session[:user_id] = nil
+	  session[:user_id] = nil
     respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to(root_url) }
     end
   end
 end

@@ -21,7 +21,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "one user should not load the edit page for another user" do
-    get(:edit, {'id' => @user.id}, {'user_id' => '1'})
+    get(:edit, {'id' => @user.id}, {'user_id' => '2'})
     assert_response 302
   end
   
@@ -31,7 +31,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "one user should not update another's record" do
-    post(:edit, {'id' => @user.id}, {'user_id' => '1'}, {'user' => @user})
+    post(:edit, {'id' => @user.id}, {'user_id' => '2'}, {'user' => @user})
     assert_response 302
   end
   
@@ -43,7 +43,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "one user should not view another's record" do
     @user = User.last
-    get(:show, {'id' => @user.id}, {'user_id' => '1'}) 
+    get(:show, {'id' => @user.id}, {'user_id' => '2'}) 
     assert_response 302
   end
 
@@ -55,7 +55,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "one user should not delete another user's record" do
     @user = User.last
-    get(:show, {'id' => @user.id}, {'user_id' => '1'})
+    get(:show, {'id' => @user.id}, {'user_id' => '2'})
     assert_response 302
   end
 end
